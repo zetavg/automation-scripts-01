@@ -40,9 +40,9 @@ try {
   // Ensure output dir exists
   await fs.mkdir(outputDir, { recursive: true });
 
+  const downloadPromise = page.waitForEvent('download');
   console.log(`📥 Downloading from: ${downloadUrl}`);
 
-  const downloadPromise = page.waitForEvent('download');
   await page.evaluate(url => (window.location.href = url), downloadUrl);
   const download = await downloadPromise;
 
