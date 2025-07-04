@@ -52,5 +52,6 @@ try {
 } catch (err) {
   console.error('❌ Download failed:', err.message || err);
 } finally {
+  await context.storageState({ path: authPath });
   await browser.close();
 }
